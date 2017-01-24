@@ -29,20 +29,45 @@
     <div class="container">
       <form method="POST">
         <div class="form-group">
-          <textarea name="text" class="form-control" rows="10" placeholder="Введите текст" autofocus></textarea>
+          <textarea id="text" name="text" class="form-control" rows="10" placeholder="Введите текст" autofocus></textarea>
         </div>
 
         <div class="form-group">
-          <button class="btn btn-primary" type="submit">Сделать красиво</button>
+            <button onclick="getText()" class="btn btn-primary" type="button">Сделать красиво</button>
+            <button onclick="clearText()" class="btn btn-primary" type="button">Очистить</button>
         </div>
 
         <div class="form-group">
-          <textarea class="form-control" rows="10" placeholder="Здесь будет результат" disabled="disabled"></textarea>
+          <textarea id="result-text" class="form-control" rows="10" placeholder="Здесь будет результат" disabled="disabled">{{ text }}</textarea>
         </div>
       </form>
     </div><!-- /.container -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script>
+
+    function getText() {
+        var result = $("#result-text");
+        $.ajax({
+            url: '/typograf',
+            data: $('form').serialize(),
+            type: 'POST',
+            success: function(response) {
+                result.text(response['text']);
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        }
+    )}
+
+    function clearText() {
+        console.log($("#text").text());
+        $("#text").val("");
+        $("#result-text").val("");
+    }
+
+    </script>
   </body>
 </html>
