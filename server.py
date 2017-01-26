@@ -1,4 +1,6 @@
 import json
+from typograf import do_typograf
+
 from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
@@ -9,10 +11,8 @@ def form():
 
 @app.route('/typograf',methods=['POST'])
 def typograf():
-        result = ""
-        for character in request.form['text']:
-            result += str(ord(character))+ " "
-        return jsonify({'text':result})
+    print(do_typograf(request.form['text']))
+    return jsonify({'text' : do_typograf(request.form['text'])})
 
 if __name__ == "__main__":
     app.run()
