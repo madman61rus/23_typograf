@@ -1,7 +1,25 @@
 # Typograf Service
 
-{TODO. There will be project description}
+Typograf это проект веб-сервиса, который представляет из себя типограф
+для русского языка. Он исправляет множество ошибок при подготовке текста,
+такие как :
+- Заменяет кавычки " и ' « »
+- Заменяет знак минус на дефис
+- Убирает лишние пробелы
+- и т.д
+
+## Инсталляция веб сервиса
+
+
+    $ pip install -r requirements.txt
+
+## Запуск веб сервиса
+
+    $ python server.py
+        * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+
+
 
 # Project Goals
 
-The code is written for educational purposes. Training course for web-developers - [DEVMAN.org](https://devman.org)
+Проект создан в образовательных целях для сайта - [DEVMAN.org](https://devman.org)
