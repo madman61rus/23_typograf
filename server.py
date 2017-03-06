@@ -11,8 +11,7 @@ def form():
 
 @app.route('/typograf',methods=['POST'])
 def typograf():
-    print(do_typograf(request.form['text']))
-    return jsonify({'text' : do_typograf(request.form['text'])})
+    return jsonify(text = do_typograf(request.form['text']))
 
 if __name__ == "__main__":
     app.run()
